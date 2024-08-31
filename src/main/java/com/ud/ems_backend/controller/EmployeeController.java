@@ -8,11 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/employees")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
@@ -47,12 +50,14 @@ public class EmployeeController {
         return ResponseEntity.ok(employee);
     }
 
-    //Build Delete Employee REST Api
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId){
+    public ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable("id") Long employeeId) {
         employeeServiceImpl.deleteEmployee(employeeId);
-        return ResponseEntity.ok("Employee deleted successfully :-");
-    }
 
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Employee deleted successfully :-");
+
+        return ResponseEntity.ok(response);
+    }
 
 }

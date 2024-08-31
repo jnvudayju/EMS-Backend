@@ -1,18 +1,32 @@
 package com.ud.ems_backend.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeDto {
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private String email;
+
+    private String dob;
+
+    private String gender;
+
+    private String education;
+
+    private String company;
+
+    private Long packageAmount;
+
+    private Long experience;
+
 }
